@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liyuan Zhang - Personal Homepage</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+
+        /* ===== 主容器：去除外部框线 ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           左侧主内容区
+           ============================================ */
+        .main {
+            flex: 3 1 600px;
+            padding: 40px 38px 50px 38px;
+            background: #ffffff;
+            order: 1;
+        }
+
+        .main section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .main section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* ---- 左侧顶部的姓名和职位 ---- */
+        .header-left {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .header-left h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+        .header-left .title {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .main h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
+        }
+
+        .main p {
+            font-size: 0.98rem;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        /* ---- 研究兴趣标签 ---- */
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            margin-top: 6px;
+        }
+        .interest-tags span {
+            font-size: 0.95rem;
+            color: #1a1a1a;
+        }
+
+        /* ---- 新闻动态 ---- */
+        .news-item {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-date {
+            font-weight: 600;
+            color: #1a1a1a;
+            min-width: 110px;
+            font-size: 0.95rem;
+        }
+        .news-content {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        .news-content strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* ---- 论文列表 ---- */
+        .pub-item {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .pub-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .pub-title {
+            font-weight: 600;
+            font-size: 1.0rem;
+        }
+        .pub-authors {
+            font-size: 0.95rem;
+            color: #2d2d2d;
+            margin: 1px 0;
+        }
+        .pub-authors strong {
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .pub-venue {
+            font-size: 0.95rem;
+            color: #2d2d2d;
+            font-style: italic;
+        }
+        .pub-links {
+            margin-top: 3px;
+        }
+        .pub-links a {
+            font-size: 0.85rem;
+            color: #0a58ca;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- 两栏 (服务 & 获奖) ---- */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
+        }
+        .two-col-grid h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+        .two-col-grid ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .two-col-grid li {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            padding-left: 18px;
+            position: relative;
+        }
+        .two-col-grid li::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            color: #1a1a1a;
+        }
+
+        /* ============================================
+           右侧个人信息栏
+           ============================================ */
+        .sidebar {
+            flex: 1 1 280px;
+            background: #ffffff;
+            padding: 40px 30px 50px 30px;
+            order: 2;
+            border-left: 2px solid #d1d5db;
+            min-width: 220px;
+        }
+
+        .sidebar .photo {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            display: block;
+            margin: 0 0 20px 0;
+            object-fit: cover;
+            border: 1px solid #e5e7eb;
+            background: #f3f4f6;
+        }
+
+        .sidebar .divider {
+            display: none;
+        }
+
+        .sidebar .info-block {
+            margin-bottom: 20px;
+        }
+
+        .sidebar .info-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar .info-block h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #4b5563;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .sidebar .info-block p,
+        .sidebar .info-block a {
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .sidebar .info-block a:hover {
+            color: #0a58ca;
+            text-decoration: underline;
+        }
+
+        .sidebar .info-block .email {
+            color: #0a58ca;
+            word-break: break-all;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 760px) {
+            .sidebar {
+                flex: 1 1 100%;
+                order: 1;
+                border-left: none;
+                border-bottom: 2px solid #d1d5db;
+                text-align: left;
+                padding: 30px 20px;
+            }
+            .sidebar .photo {
+                max-width: 180px;
+                margin: 0 0 16px 0;
+            }
+            .main {
+                flex: 1 1 100%;
+                order: 2;
+                padding: 30px 20px;
+            }
+            .two-col-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .news-item {
+                flex-direction: column;
+            }
+            .news-date {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ============================================
+    左侧：主内容区
+    ============================================ -->
+    <main class="main">
+
+        <!-- 顶部：姓名 + 职位 -->
+        <div class="header-left">
+            <h1>Liyuan Zhang</h1>
+            <div class="title">PhD Candidate · Southeast University, Nanjing, China</div>
+        </div>
+
+        <section>
+            <h2>About Me</h2>
+            <p>I am Liyuan Zhang (张力元), a PhD Candidate in Southeast University, Nanjing, China, advised by Prof. Xiaolin Fang. Previously, I obtained a Master of Software Engineering from Heilongjiang University, advised by Prof. Yan Yang and Prof. Yong Liu.</p>
+            <p>My research focuses on <strong>multimodal learning</strong> and <strong>fake news detection</strong>, with a particular interest in developing robust detection systems for short video platforms. More recently, my research interests have been moving towards <strong>Vision-Language Models (VLMs)</strong> and <strong>open-world detection</strong>.</p>
+            <p>Please feel free to reach out for potential collaborations or discussions.</p>
+            <!-- <p>I received my M.Eng. degree from Heilongjiang University in 2026, supervised by Prof. Yan Yang and Prof. Yong Liu. My master's research focused on <strong>multimodal learning</strong> and <strong>fake news detection</strong>, with a particular interest in developing robust detection systems for short video platforms. Currently, I am a PhD Candidate at Southeast University, advised by Prof. Xiaolin Fang. My current research explores <strong>Vision-Language Models (VLMs)</strong> and <strong>open-world detection</strong>, aiming to improve model generalization in dynamic environments.</p> -->
+            <!-- <p>I received my M.Eng. degree from Heilongjiang University in 2025, supervised by Prof. Yan Yang and Prof. Yong Liu. During my master's studies, I focused on multimodal learning and fake news detection on social media. Currently, I am a Ph.D. student at Southeast University, advised by Prof. Xiaolin Fang, with research interests in Vision-Language Models (VLMs) and open-world detection.</p> -->
+            <!-- <p>My research focuses on <strong>multimodal learning</strong> and <strong>fake news detection</strong>, with a particular interest in developing robust and evolving detection systems for emergency events on short video platforms. I am also interested in knowledge-enhanced representation learning and domain adaptation techniques to improve cross-modal understanding and generalization.</p> -->
+            <p><strong>Research Interests:</strong> Multimodal Learning, Vision-Language Models, Open-World Detection.</p>
+        </section>
+
+        <!-- 新闻动态 -->
+        <section>
+            <h2>News</h2>
+
+            <div class="news-item">
+                <span class="news-date">July 2026</span>
+                <span class="news-content">One paper "Uni-Detector: Towards Universal Multimodal Fake News Detection" has been accepted by <strong>ACM MM 2026</strong>.</span>
+            </div>
+            <div class="news-item">
+                <span class="news-date">June 2025</span>
+                <span class="news-content">Presented a poster at <strong>ICMR 2025</strong>.</span>
+            </div>
+            <div class="news-item">
+                <span class="news-date">May 2025</span>
+                <span class="news-content">Presented a poster and an oral talk at <strong>DASFAA 2025</strong>.</span>
+            </div>
+            <div class="news-item">
+                <span class="news-date">Jan. 2025</span>
+                <span class="news-content">One paper "MFSVFND: Multimodal Fusion Network for Detecting Fake News on Short Video Platforms" has been accepted by <strong>ICMR 2025</strong>.</span>
+            </div>
+            <div class="news-item">
+                <span class="news-date">Jan. 2025</span>
+                <span class="news-content">Two of our papers were accepted to <strong>DASFAA 2025</strong>: "T³SVFND: Towards an Evolving Fake News Detector for Emergencies with Test-Time Training on Short Video Platforms" and "KMMN: Knowledge Enhanced Multimodal Multi-grained Network for Fake News Detection".</span>
+            </div>
+            <div class="news-item">
+                <span class="news-date">Dec. 2024</span>
+                <span class="news-content">Presented an oral talk at <strong>ACML 2024</strong>.</span>
+            </div>
+            <div class="news-item">
+                <span class="news-date">Oct. 2024</span>
+                <span class="news-content">Our paper "Multi-Task Network Guided Multimodal Fusion for Fake News Detection" accepted by <strong>ACML 2024</strong>.</span>
+            </div>
+        </section>
+
+        <!-- 精选论文 -->
+        <section>
+            <h2>Publications</h2>
+
+            <!-- 1. 已录用的 ACM MM 2026 -->
+            <div class="pub-item">
+                <div class="pub-title">Uni-Detector: Towards Universal Multimodal Fake News Detection</div>
+                <div class="pub-authors"><strong>Liyuan Zhang</strong>, Yong Liu, Wei Zhang, Yan Yang</div>
+                <div class="pub-venue">ACM International Conference on Multimedia (MM) 2026 (Accepted)</div>
+            </div>
+
+            <!-- 2. ICMR 2025: MFSVFND (你提供的新论文) -->
+            <div class="pub-item">
+                <div class="pub-title">MFSVFND: Multimodal Fusion Network for Detecting Fake News on Short Video Platforms</div>
+                <div class="pub-authors"><strong>Liyuan Zhang</strong>, Yajing Yang, Yan Yang, Yong Liu, Zhongyan Gui, Ruofan Li, Hao Fei</div>
+                <div class="pub-venue">International Conference on Multimedia Retrieval (ICMR) 2025</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1145/3731715.3733486" target="_blank">[ACM DL]</a>
+                </div>
+            </div>
+
+            <!-- 4. DASFAA 2026: T^3SVFND -->
+            <div class="pub-item">
+                <div class="pub-title">T<sup>3</sup>SVFND: Towards an Evolving Fake News Detector for Emergencies with Test-Time Training on Short Video Platforms</div>
+                <div class="pub-authors"><strong>Liyuan Zhang</strong>, Zeyun Cheng, Zhongyan Gui, Yan Yang, Yong Liu, Jinke Ma</div>
+                <div class="pub-venue">International Conference on Database Systems for Advanced Applications (DASFAA) 2025</div>
+                <div class="pub-links">
+                    <a href="https://link.springer.com/chapter/10.1007/978-981-95-3830-0_22" target="_blank">[Springer]</a>
+                </div>
+            </div>
+
+            <!-- 5. DASFAA 2026: KMMN -->
+            <div class="pub-item">
+                <div class="pub-title">KMMN: Knowledge Enhanced Multimodal Multi-grained Network for Fake News Detection</div>
+                <div class="pub-authors"><strong>Liyuan Zhang</strong>, Zeyun Cheng, Zhongyan Gui, Yan Yang, Yong Liu</div>
+                <div class="pub-venue">International Conference on Database Systems for Advanced Applications (DASFAA) 2025</div>
+                <div class="pub-links">
+                    <a href="https://link.springer.com/chapter/10.1007/978-981-95-4149-2_26" target="_blank">[Springer]</a>
+                </div>
+            </div>
+
+                        <!-- 3. ICML 2026: Multi-Task Network Guided Multimodal Fusion -->
+            <div class="pub-item">
+                <div class="pub-title">Multi-Task Network Guided Multimodal Fusion for Fake News Detection</div>
+                <div class="pub-authors">Jinke Ma, <strong>Liyuan Zhang</strong>, Yong Liu, Wei Zhang</div>
+                <div class="pub-venue">Asian Conference on Machine Learning (ACML) 2024</div>
+                <div class="pub-links">
+                    <a href="https://proceedings.mlr.press/v260/ma25a.html" target="_blank">[Proceedings]</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 学术服务 & 获奖 -->
+        <section>
+            <h2>Services &amp; Awards</h2>
+            <div class="two-col-grid">
+                <div>
+                    <h3>Academic Services</h3>
+                    <ul>
+                        <li>Reviewer for <strong>ACM MM</strong> (2025, 2026)</li>
+                        <li>Reviewer for <strong>AAAI</strong> (2025, 2026)</li>
+                        <li>Reviewer for <strong>NeurIPS</strong> (2026)</li>
+                        <li>Reviewer for <strong>WWW</strong> (2026)</li>
+                        <li>Reviewer for <strong>SIGIR</strong> (2026)</li>
+                        <li>Reviewer for <strong>ICLR</strong> (2026)</li>
+                        <li>Reviewer for <strong>ICML</strong> (2026)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Awards</h3>
+                    <ul>
+                        <li><strong>China National Scholarship</strong> (2025)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+    右侧：个人信息栏
+    ============================================ -->
+    <aside class="sidebar">
+
+        <!-- 长方形照片 -->
+        <img src="myphoto.jpg" alt="Liyuan Zhang" class="photo">
+
+        <!-- <div class="info-block">
+            <h3 style="font-weight: 700; text-transform: none; letter-spacing: normal; color: #1a1a1a;">Research Interests</h3>
+            <p>Multimodal Learning · Vision-Language Models · Open-World Detection</p>
+        </div> -->
+
+        <div class="info-block">
+            <h3 style="font-weight: 700; text-transform: none; letter-spacing: normal; color: #1a1a1a; font-size: 1.1rem;">Email</h3>
+            <a href="mailto:2231976@s.hlju.edu.cn" class="email">2231976@s.hlju.edu.cn</a>
+        </div>
+
+        <div class="info-block">
+            <h3 style="font-weight: 700; text-transform: none; letter-spacing: normal; color: #1a1a1a; font-size: 1.1rem;">Education</h3>
+            <p>PhD Candidate, Southeast University (2026–)</p>
+            <p>Master of Software Engineering, Heilongjiang University (2023–2026)</p>
+        </div>
+    </aside>
+
+</div>
+
+</body>
+</html>
